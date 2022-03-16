@@ -27,6 +27,7 @@
   "scripts": {
     "lint": "xo",
     "fix": "xo --fix",
+    "format": "prettier --write --ignore-path .gitignore .",
     "jest": "jest",
     "example": "node example.js",
     "test": "jest",
@@ -90,7 +91,7 @@
     "gulpfriendly"
   ],
   "xo": {
-    "space": 4,
+    "prettier": true,
     "plugins": [
       "jsdoc"
     ],
@@ -100,10 +101,6 @@
     "rules": {
       "arrow-body-style": "off",
       "capitalized-comments": "off",
-      "comma-dangle": [
-        "error",
-        "never"
-      ],
       "eslint-comments/disable-enable-pair": "off",
       "guard-for-in": "off",
       "jsdoc/check-values": [
@@ -135,19 +132,7 @@
       "max-params": "off",
       "no-bitwise": "off",
       "no-negated-condition": "off",
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ],
-      "operator-linebreak": [
-        "error",
-        "after"
-      ],
       "prefer-template": "error",
-      "space-before-function-paren": [
-        "error",
-        "never"
-      ],
       "spaced-comment": "off",
       "unicorn/explicit-length-check": "off",
       "unicorn/no-array-for-each": "off",
