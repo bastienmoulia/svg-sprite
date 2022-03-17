@@ -11,9 +11,10 @@ const rm = fs.promises.rm || fs.promises.rmdir;
 /**
  * Removing tempPath for tests
  *
- * @param {string} pathName path
+ * @param   {string}        pathName Path
+ *
  * @returns {Promise<void>}
  */
-module.exports = async(pathName = paths.tmp) => {
+module.exports = async (pathName = paths.tmp) => {
     await rm(pathName, { force: true, recursive: true });
 };

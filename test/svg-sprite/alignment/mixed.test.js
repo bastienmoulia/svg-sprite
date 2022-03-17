@@ -26,7 +26,7 @@ describe(`svg-sprite: with mixed alignment and ${align.length} SVG files`, () =>
         let data = null;
         let svgPath = null;
 
-        beforeAll(async() => {
+        beforeAll(async () => {
             spriter = new SVGSpriter({
                 dest: tmpPath,
                 shape: {
@@ -55,7 +55,7 @@ describe(`svg-sprite: with mixed alignment and ${align.length} SVG files`, () =>
             svgPath = path.basename(result.view.sprite.path);
         });
 
-        it('creates visually correct sprite', async() => {
+        it('creates visually correct sprite', async () => {
             expect.hasAssertions();
 
             const input = path.join(tmpPath, 'view/svg', svgPath);
@@ -64,7 +64,7 @@ describe(`svg-sprite: with mixed alignment and ${align.length} SVG files`, () =>
             await expect(input).toBeVisuallyEqualTo(expected);
         });
 
-        it('creates a visually correct stylesheet resource', async() => {
+        it('creates a visually correct stylesheet resource', async () => {
             expect.hasAssertions();
 
             data.css = '../sprite.mixed.css';
@@ -82,7 +82,7 @@ describe(`svg-sprite: with mixed alignment and ${align.length} SVG files`, () =>
         let data = null;
         let svgPath = null;
 
-        beforeAll(async() => {
+        beforeAll(async () => {
             spriter = new SVGSpriter({
                 dest: tmpPath,
                 shape: {
@@ -115,7 +115,7 @@ describe(`svg-sprite: with mixed alignment and ${align.length} SVG files`, () =>
             svgPath = path.basename(result.view.sprite.path);
         });
 
-        it('creates visually correct sprite', async() => {
+        it('creates visually correct sprite', async () => {
             expect.hasAssertions();
 
             const input = path.join(tmpPath, 'view/svg', svgPath);
@@ -124,7 +124,7 @@ describe(`svg-sprite: with mixed alignment and ${align.length} SVG files`, () =>
             await expect(input).toBeVisuallyEqualTo(expected);
         });
 
-        it('creates a visually correct stylesheet resource', async() => {
+        it('creates a visually correct stylesheet resource', async () => {
             expect.hasAssertions();
 
             const scssText = sass.renderSync({ file: path.join(tmpPath, 'view/sprite.mixed.scss') });

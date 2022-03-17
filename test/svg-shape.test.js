@@ -32,10 +32,13 @@ describe('testing SVGShape initialization', () => {
         fixXMLString.mockReturnValueOnce(FIXED_TEST_SVG);
 
         expect(() => {
-            getShape(new File({
-                path: __dirname,
-                contents: Buffer.from(TEST_SVG)
-            }), spriter);
+            getShape(
+                new File({
+                    path: __dirname,
+                    contents: Buffer.from(TEST_SVG)
+                }),
+                spriter
+            );
         }).not.toThrow(Error);
         expect(fixXMLString).toHaveBeenCalledWith(TEST_SVG);
     });
@@ -48,10 +51,13 @@ describe('testing SVGShape initialization', () => {
         });
 
         expect(() => {
-            getShape(new File({
-                path: __dirname,
-                contents: Buffer.from(TEST_SVG)
-            }), spriter);
+            getShape(
+                new File({
+                    path: __dirname,
+                    contents: Buffer.from(TEST_SVG)
+                }),
+                spriter
+            );
         }).toThrow(new Error('Invalid SVG file'));
         expect(fixXMLString).toHaveBeenCalledWith(TEST_SVG);
     });
@@ -62,10 +68,13 @@ describe('testing SVGShape initialization', () => {
         const TEST_NON_SVG = '<div class="test">123</div>';
 
         expect(() => {
-            getShape(new File({
-                path: __dirname,
-                contents: Buffer.from(TEST_NON_SVG)
-            }), spriter);
+            getShape(
+                new File({
+                    path: __dirname,
+                    contents: Buffer.from(TEST_NON_SVG)
+                }),
+                spriter
+            );
         }).toThrow(Error);
         expect(fixXMLString).toHaveBeenCalledWith(TEST_NON_SVG);
     });
@@ -82,10 +91,13 @@ describe('testing SVGShape initialization', () => {
             const svgFileBuffer = fs.readFileSync(path.join(cwdWeather, weatherFile));
 
             expect(() => {
-                getShape(new File({
-                    path: __dirname,
-                    contents: svgFileBuffer
-                }), spriter);
+                getShape(
+                    new File({
+                        path: __dirname,
+                        contents: svgFileBuffer
+                    }),
+                    spriter
+                );
             }).not.toThrow(Error);
             expect(fixXMLString).not.toHaveBeenCalled();
         });

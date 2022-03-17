@@ -35,13 +35,19 @@ describe('testing transforms.svgo', () => {
         jest.spyOn(svgo, 'optimize').mockReturnValueOnce(TEST_RESULT);
         svgoTransform(shape, {}, spriter, noop);
 
-        expect(svgo.optimize).toHaveBeenCalledWith(TEST_SVG, { plugins: ['preset-default', {
-            active: true,
-            name: 'removeXMLProcInst'
-        }, {
-            active: true,
-            name: 'removeDoctype'
-        }] });
+        expect(svgo.optimize).toHaveBeenCalledWith(TEST_SVG, {
+            plugins: [
+                'preset-default',
+                {
+                    active: true,
+                    name: 'removeXMLProcInst'
+                },
+                {
+                    active: true,
+                    name: 'removeDoctype'
+                }
+            ]
+        });
     });
 
     it('should set default config with expected params if not provided 2', () => {
@@ -65,27 +71,35 @@ describe('testing transforms.svgo', () => {
         jest.spyOn(svgo, 'optimize').mockReturnValueOnce(TEST_RESULT);
         svgoTransform(shape, {}, spriter, noop);
 
-        expect(svgo.optimize).toHaveBeenCalledWith(TEST_SVG, { plugins: ['preset-default', {
-            active: false,
-            name: 'removeXMLProcInst'
-        }, {
-            active: false,
-            name: 'removeDoctype'
-        }] });
+        expect(svgo.optimize).toHaveBeenCalledWith(TEST_SVG, {
+            plugins: [
+                'preset-default',
+                {
+                    active: false,
+                    name: 'removeXMLProcInst'
+                },
+                {
+                    active: false,
+                    name: 'removeDoctype'
+                }
+            ]
+        });
     });
 
     it('should add provided config', () => {
         expect.hasAssertions();
 
-        const TEST_PLUGINS = [{
-            name: 'preset-default',
-            params: {
-                overrides: {
-                    removeTitle: false,
-                    removeDesc: false
+        const TEST_PLUGINS = [
+            {
+                name: 'preset-default',
+                params: {
+                    overrides: {
+                        removeTitle: false,
+                        removeDesc: false
+                    }
                 }
             }
-        }];
+        ];
         const spriter = {
             config: {
                 svg: {
@@ -116,11 +130,14 @@ describe('testing transforms.svgo', () => {
             config: {
                 svg: {},
                 log: {
-                    transports: [{
-                        level: 'debug'
-                    }, {
-                        level: 'debug'
-                    }]
+                    transports: [
+                        {
+                            level: 'debug'
+                        },
+                        {
+                            level: 'debug'
+                        }
+                    ]
                 }
             },
             error: jest.fn(),
@@ -146,9 +163,11 @@ describe('testing transforms.svgo', () => {
             config: {
                 svg: {},
                 log: {
-                    transports: [{
-                        level: 'info'
-                    }]
+                    transports: [
+                        {
+                            level: 'info'
+                        }
+                    ]
                 }
             },
             error: jest.fn(),
@@ -215,6 +234,10 @@ describe('testing transforms.svgo', () => {
         svgoTransform(shape, {}, spriter, noop);
 
         expect(noop).toHaveBeenCalledWith(TEST_ERROR);
-        expect(spriter.error).toHaveBeenCalledWith('Optimizing "%s" with SVGO failed with error "%s"', 'name', TEST_ERROR);
+        expect(spriter.error).toHaveBeenCalledWith(
+            'Optimizing "%s" with SVGO failed with error "%s"',
+            'name',
+            TEST_ERROR
+        );
     });
 });

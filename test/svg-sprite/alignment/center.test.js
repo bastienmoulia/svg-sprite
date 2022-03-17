@@ -27,7 +27,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
         let data = null;
         let svgPath = null;
 
-        beforeAll(async() => {
+        beforeAll(async () => {
             spriter = new SVGSpriter({
                 dest: tmpPath,
                 shape: {
@@ -56,7 +56,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
             svgPath = path.basename(result.css.sprite.path);
         });
 
-        it('creates visually correct sprite', async() => {
+        it('creates visually correct sprite', async () => {
             expect.hasAssertions();
 
             const input = path.join(tmpPath, 'css/svg', svgPath);
@@ -65,7 +65,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
             await expect(input).toBeVisuallyEqualTo(expected);
         });
 
-        it('creates a visually correct stylesheet resource', async() => {
+        it('creates a visually correct stylesheet resource', async () => {
             expect.hasAssertions();
 
             data.css = '../sprite.centered.css';
@@ -84,7 +84,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
         let data = null;
         let svgPath = null;
 
-        beforeAll(async() => {
+        beforeAll(async () => {
             spriter = new SVGSpriter({
                 dest: tmpPath,
                 shape: {
@@ -113,7 +113,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
             svgPath = path.basename(result.css.sprite.path);
         });
 
-        it('creates visually correct sprite', async() => {
+        it('creates visually correct sprite', async () => {
             expect.hasAssertions();
 
             const input = path.join(tmpPath, 'css/svg', svgPath);
@@ -122,7 +122,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
             await expect(input).toBeVisuallyEqualTo(expected);
         });
 
-        it('creates a visually correct stylesheet resource', async() => {
+        it('creates a visually correct stylesheet resource', async () => {
             expect.hasAssertions();
 
             const scssText = sass.renderSync({ file: path.join(tmpPath, 'css/sprite.centered.scss') });
@@ -144,7 +144,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
         let data = null;
         let svgPath = null;
 
-        beforeAll(async() => {
+        beforeAll(async () => {
             spriter = new SVGSpriter({
                 dest: tmpPath,
                 shape: {
@@ -173,7 +173,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
             svgPath = path.basename(result.css.sprite.path);
         });
 
-        it('creates visually correct sprite', async() => {
+        it('creates visually correct sprite', async () => {
             expect.hasAssertions();
 
             const input = path.join(tmpPath, 'css/svg', svgPath);
@@ -182,7 +182,7 @@ describe(`svg-sprite: with centered alignment and ${align.length} SVG files`, ()
             await expect(input).toBeVisuallyEqualTo(expected);
         });
 
-        it('creates a visually correct stylesheet resource', async() => {
+        it('creates a visually correct stylesheet resource', async () => {
             expect.hasAssertions();
 
             const lessFile = path.join(tmpPath, 'css/sprite.centered.less');

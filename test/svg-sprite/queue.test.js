@@ -35,10 +35,8 @@ describe('testing Queue', () => {
 
             const testFn = jest.fn();
 
-            /**
-             * @returns {object} mock result
-             */
-            const testEventEmitter = function() {
+            /** @returns {object} Mock result */
+            const testEventEmitter = function () {
                 return {
                     on(...args) {
                         testFn(...args);
@@ -72,7 +70,10 @@ describe('testing Queue', () => {
 
             queue.add(TEST_FILE);
 
-            expect(spriter.debug).toHaveBeenLastCalledWith('Added "%s" to processing queue', path.basename(TEST_FILE_NAME));
+            expect(spriter.debug).toHaveBeenLastCalledWith(
+                'Added "%s" to processing queue',
+                path.basename(TEST_FILE_NAME)
+            );
             expect(queue._files).toStrictEqual([TEST_FILE]);
             expect(queue.emit).toHaveBeenCalledWith('add');
         });
@@ -83,7 +84,7 @@ describe('testing Queue', () => {
         let queue;
 
         const TEST_DISTRIBUTE = [{ TEST: 'distribute' }];
-        const TEST_SHAPE = { distribute: () => ([...TEST_DISTRIBUTE]) };
+        const TEST_SHAPE = { distribute: () => [...TEST_DISTRIBUTE] };
 
         beforeEach(() => {
             spriter = { debug: jest.fn(), _shapes: [] };
@@ -157,7 +158,7 @@ describe('testing Queue', () => {
         });
 
         describe('testing positive case', () => {
-            it('should increase active count call spriter._transformShape and shape.complement and then', async() => {
+            it('should increase active count call spriter._transformShape and shape.complement and then', async () => {
                 expect.hasAssertions();
 
                 const TEST_FILE = 'file';
@@ -187,7 +188,7 @@ describe('testing Queue', () => {
                 expect(testFn).toHaveBeenCalledWith();
             });
 
-            it('should not increase active call _spriter.error and emit "remove" event if error occured', async() => {
+            it('should not increase active call _spriter.error and emit "remove" event if error occured', async () => {
                 expect.hasAssertions();
 
                 const TEST_FILE = { path: 'file' };
@@ -208,7 +209,7 @@ describe('testing Queue', () => {
                 expect(queue.emit).toHaveBeenCalledWith('remove');
             });
 
-            it('should not increase active call _spriter.error and emit "remove" event if error occured and active is zero', async() => {
+            it('should not increase active call _spriter.error and emit "remove" event if error occured and active is zero', async () => {
                 expect.hasAssertions();
 
                 const TEST_FILE = { path: 'file' };

@@ -90,11 +90,13 @@ describe('testing SVGSpriter', () => {
                 };
                 spriter.add(TEST_SVG, 'weather-clear.svg', TEST_EMPTY_SVG);
 
-                expect(spriter._queue.add).toHaveBeenCalledWith(new File({
-                    base: path.dirname(path.resolve(TEST_SVG)),
-                    path: path.resolve(TEST_SVG),
-                    contents: Buffer.from(TEST_EMPTY_SVG)
-                }));
+                expect(spriter._queue.add).toHaveBeenCalledWith(
+                    new File({
+                        base: path.dirname(path.resolve(TEST_SVG)),
+                        path: path.resolve(TEST_SVG),
+                        contents: Buffer.from(TEST_EMPTY_SVG)
+                    })
+                );
             });
 
             it('should create vinyl file from passed absolute file and add it to _queue', () => {
@@ -103,11 +105,13 @@ describe('testing SVGSpriter', () => {
                 };
                 spriter.add(path.resolve(TEST_SVG), 'weather-clear.svg', TEST_EMPTY_SVG);
 
-                expect(spriter._queue.add).toHaveBeenCalledWith(new File({
-                    base: path.dirname(path.resolve(TEST_SVG)),
-                    path: path.resolve(TEST_SVG),
-                    contents: Buffer.from(TEST_EMPTY_SVG)
-                }));
+                expect(spriter._queue.add).toHaveBeenCalledWith(
+                    new File({
+                        base: path.dirname(path.resolve(TEST_SVG)),
+                        path: path.resolve(TEST_SVG),
+                        contents: Buffer.from(TEST_EMPTY_SVG)
+                    })
+                );
             });
         });
     });

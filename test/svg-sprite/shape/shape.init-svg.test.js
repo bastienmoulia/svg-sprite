@@ -124,10 +124,7 @@ describe('testing _initSVG()', () => {
     it('should fill entities', () => {
         expect.hasAssertions();
 
-        const TEST_ENTITIES = [
-            '<!ENTITY name1 "value1">',
-            '<!ENTITY name2 "value2">'
-        ];
+        const TEST_ENTITIES = ['<!ENTITY name1 "value1">', '<!ENTITY name2 "value2">'];
         const TEST_FILE = {
             contents: `<svg><!DOCTYPE ${TEST_ENTITIES.join('\n')}>&name1;</svg>`,
             path: 'test_path',
@@ -145,7 +142,9 @@ describe('testing _initSVG()', () => {
 
         const shape = new SVGShape(TEST_FILE, TEST_SPRITER);
 
-        expect(shape.svg.current.replace('\n', '')).toBe('<svg><!DOCTYPE <!ENTITY name1 "value1"><!ENTITY name2 "value2">>value1</svg>');
+        expect(shape.svg.current.replace('\n', '')).toBe(
+            '<svg><!DOCTYPE <!ENTITY name1 "value1"><!ENTITY name2 "value2">>value1</svg>'
+        );
     });
 
     it('should throw error if bad svg parsed', () => {
@@ -163,7 +162,8 @@ describe('testing _initSVG()', () => {
                         }
                     };
                 }
-            }, path: 'test_path',
+            },
+            path: 'test_path',
             relative: 'test_relative'
         };
         const TEST_SPRITER = {
